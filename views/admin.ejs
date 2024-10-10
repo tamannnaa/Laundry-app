@@ -1,0 +1,413 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Admin Dashboard</title>
+        <style>
+/* Reset default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Global styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Navbar styles */
+.navbar {
+    background-color: #2e3138;
+    color: #fff;
+    padding: 15px;
+    display: flex;
+    justify-content: flex-end;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #41464b;
+    transition: background-color 0.3s ease;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.navbar a:hover {
+    background-color: #595e63;
+}
+
+/* Filters styles */
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.filters label {
+    margin-right: 10px;
+    color: #333;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.filters input[type="date"],
+.filters select {
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    background-color: #f5f5f5;
+    color: #333;
+    transition: border-color 0.3s ease;
+}
+
+.filters input[type="date"]:focus,
+.filters select:focus {
+    border-color: #2e3138;
+    outline: none;
+}
+
+.filters select {
+    width: 200px;
+}
+
+.filters button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: #2e3138;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.filters button:hover {
+    background-color: #41464b;
+}
+
+/* Content area styles */
+.content {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+/* Form summary and details styles */
+.form-summary {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    position: relative;
+    background-color: #f5f5f5;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-summary:hover {
+    background-color: #e5e5e5;
+}
+
+.form-summary.picked {
+    background-color: #5cabff;
+    color: #fff;
+}
+
+.form-summary.washed {
+    background-color: #6ab04c;
+    color: #fff;
+}
+
+.form-summary .room-no {
+    font-weight: 500;
+    color: #333;
+    margin-right: 10px;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+}
+
+.form-summary .total-clothes {
+    font-weight: 500;
+    color: #333;
+    margin-right: 10px;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+}
+
+.form-summary .date {
+    font-size: 14px;
+    color: #555;
+    margin-right: 10px;
+    letter-spacing: 0.5px;
+}
+
+.form-details {
+    display: none;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-details table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.form-details th,
+.form-details td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+    font-size: 14px;
+}
+
+.form-details th {
+    background-color: #f2f2f2;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+/* Button styles */
+.button,
+.pick-btn,
+.wash-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: #2e3138;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    margin-right: 5px;
+    margin-top: 5px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.button:hover,
+.pick-btn:hover,
+.wash-btn:hover {
+    background-color: #41464b;
+}
+
+.pick-btn {
+    background-color: #5cabff;
+}
+
+.pick-btn:hover {
+    background-color: #4c9eff;
+}
+
+.wash-btn {
+    background-color: #6ab04c;
+}
+
+.wash-btn:hover {
+    background-color: #5ca43c;
+}
+
+@media (max-width: 480px) {
+    /* Adjust styles for smaller screens */
+    .form-summary {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .form-summary .room-no,
+    .form-summary .total-clothes,
+    .form-summary .date {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .form-summary .room-no {
+        font-size: 24px;
+    }
+
+    .form-summary .total-clothes {
+        font-size: 24px;
+    }
+
+    .form-summary .date {
+        font-size: 12px;
+    }
+
+    .button,
+    .pick-btn,
+    .wash-btn {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+} </style>
+    </head>
+    <body>
+        <!-- Navbar -->
+        <div class="navbar">
+            <a href="/logout">Logout</a>
+        </div>
+        
+        <!-- Filters -->
+        <div class="filters">
+            <label for="date">Select Date:</label>
+            <input type="date" id="date" name="date" onchange="applyFilters()">
+            <label for="hostel">Select Hostel:</label>
+            <select id="hostel" name="hostel" onchange="applyFilters()"> <!-- Added onchange event listener -->
+                <option value="" disabled selected>Select Hostel</option>
+                <option value="Aryabhatta">Aryabhatta</option>
+                <option value="Bose">Bose</option>
+                <option value="Chanakya">Chanakya</option>
+                <option value="Teresa">Teresa</option>
+                <option value="Gargi">Gargi</option>
+                <option value="Kalpana">Kalpana</option>
+                <option value="NGH">New Girls Hostel</option>
+            </select>
+        </div>
+        
+        <!-- Content area -->
+        <div class="content">
+            <!-- Your content goes here -->
+            <h1>Admin Dashboard</h1>
+            <% if (forms && forms.length > 0) { %>
+                <% forms.forEach((form, index) => { %>
+                    <div class="form-summary <%= form.status %>" onclick="toggleTable(this)" data-id="<%= form._id %>">
+                        <p>Form <%= index + 1 %></p>
+                        <p>Submitted On: <%= form.submittedOn.toLocaleString() %></p>
+                        <p>Hostel: <%= form.user_id.hostel %></p>
+                        <p>Room No: <%= form.user_id.room_no %></p>
+                        <p>Total Clothes: <%= form.clothesData ? Object.values(form.clothesData).reduce((total, qty) => total + qty, 0) : 0 %></p>
+                        <button class="pick-btn" onclick="updateFormStatus(event, '<%= form._id %>', 'picked')">Picked</button>
+                        <button class="wash-btn" onclick="updateFormStatus(event, '<%= form._id %>', 'washed')">Washed</button>
+  </div>
+                    <div class="form-details">
+                        <table>
+                            <tr>
+                                <th>Item</th>
+                                <th>Quantity</th>
+                            </tr>
+                            <% if (form.clothesData) { %>
+                                <% Object.entries(form.clothesData).forEach(([item, quantity]) => { %>
+                                    <tr>
+                                        <td><%= item %></td>
+                                        <td><%= quantity %></td>
+                                    </tr>
+                                <% }); %>
+                            <% } else { %>
+                                <tr>
+                                    <td colspan="2">No clothes data available</td>
+                                </tr>
+                            <% } %>
+                        </table>
+                        
+                    </div>
+                <% }); %>
+            <% } else { %>
+                <p>No laundry form data found.</p>
+            <% } %>
+        </div>
+    
+        <script>
+    function applyFilters() {
+        const date = document.getElementById('date').value;
+        const hostel = document.getElementById('hostel').value;
+        const urlParams = new URLSearchParams(window.location.search);
+        urlParams.set('date', date);
+        urlParams.set('hostel', hostel);
+        window.location.href = '/admin?' + urlParams.toString();
+    }
+
+    function toggleTable(element) {
+        const formDetails = element.nextElementSibling;
+        if (formDetails.style.display === "none") {
+            formDetails.style.display = "block";
+        } else {
+            formDetails.style.display = "none";
+        }
+    }
+    function updateFormStatus(event, formId, status) {
+  event.preventDefault(); // Prevent the default button behavior
+
+  console.log('Updating form status:', formId, status);
+
+  fetch('/update-form-status', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ formId, status })
+  })
+  .then(response => response.json()) // Parse the response as JSON
+  .then(data => {
+    if (data.error) {
+      console.error('Error updating form status:', data.error);
+    } else {
+      const formSummary = document.querySelector(`.form-summary[data-id="${formId}"]`);
+      formSummary.classList.remove('picked', 'washed');
+      formSummary.classList.add(status);
+      console.log(data.message); // Log the success message
+    }
+  })
+  .catch(error => {
+    console.error('Error updating form status:', error);
+  });
+}
+    // Initialize the filters with the current URL parameters
+    document.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const dateInput = document.getElementById('date');
+        const hostelSelect = document.getElementById('hostel');
+
+        dateInput.value = urlParams.get('date') || '';
+        hostelSelect.value = urlParams.get('hostel') || '';
+    });
+</script>
+
+
+
+</body>
+</html>

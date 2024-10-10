@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laundry Form</title>
+    <style>
+        /* Body styles */
+ body {
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+     background-color: #f7f7f7;
+     margin: 0;
+     padding: 20px;
+ }
+ 
+ /* Header styles */
+ .heading {
+     text-align: center;
+     margin-bottom: 30px;
+     color: #333;
+     font-size: 28px;
+ }
+ 
+ /* Form container styles */
+ #form {
+     max-width: 600px;
+     margin: auto;
+     background-color: #fff;
+     padding: 25px;
+     border-radius: 10px;
+     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+ }
+ 
+ /* Table styles */
+ table {
+     width: 100%;
+     border-collapse: collapse;
+     margin-top: 20px;
+ }
+ 
+ th, td {
+     border: 1px solid #e0e0e0;
+     padding: 10px;
+     text-align: left;
+ }
+ 
+ th {
+     background-color: #fafafa;
+     color: #333;
+ }
+ 
+ /* Input styles */
+ input[type='text'] {
+     width: 60px;
+     padding: 5px;
+     margin: 0 5px;
+     border: 1px solid #ddd;
+     border-radius: 4px;
+     box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+ }
+ 
+ input[type='button'] {
+     width: 30px;
+     height: 30px;
+     line-height: 30px;
+     display: inline-block;
+     text-align: center;
+     background-color: #4CAF50;
+     color: white;
+     border: none;
+     border-radius: 15px;
+     cursor: pointer;
+     transition: background-color 0.3s ease;
+ }
+ 
+ input[type='button']:hover {
+     background-color: #45a049;
+ }
+ 
+ input[type='submit'] {
+     width: auto;
+     padding: 10px 30px;
+     background-color: #4CAF50;
+     color: white;
+     border: none;
+     border-radius: 5px;
+     cursor: pointer;
+     transition: background-color 0.3s ease;
+ }
+ 
+ input[type='submit']:hover {
+     background-color: #45a049;
+ }
+ 
+ /* Total items container styles */
+ #totalClothingItemsContainer {
+     margin-top: 20px;
+     text-align: center;
+ }
+ 
+ #totalClothingItemsContainer strong, #totalClothingItemsContainer span {
+     font-size: 18px;
+     font-weight: bold;
+ }
+ 
+ /* Responsive Design */
+ @media (max-width: 640px) {
+     body {
+         padding: 10px;
+     }
+ 
+     #form {
+         padding: 20px;
+     }
+ 
+     .heading {
+         font-size: 24px;
+     }
+ }
+ 
+ 
+     </style>
+</head>
+<body>
+    <h1 class="heading">Student Laundry Form</h1>
+    <form id="form" action="/create-form" method="post" onsubmit="prepareClothesData()">
+    
+            
+    <table>
+        <tr>
+            <th>S No.</th>
+            <th>Clothes</th>
+            <th>Quantity</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Bed Sheets</td>
+            <td class="quantity-cell">
+                <div class="number-input">
+                    <input type="button" value="-" onclick="decrementValue('bedsheets')">
+                    <!-- Adjusted input type back to number as implied by the correction request -->
+                    <input type="number" name="bedsheets" value="0" min="0" style="text-align: center;">
+                    <input type="button" value="+" onclick="incrementValue('bedsheets')">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Towel</td>
+            <td class="quantity-cell">
+                <div class="number-input">
+                    <input type="button" value="-" onclick="decrementValue('towel')">
+                    <!-- Adjusted input type back to number as implied by the correction request -->
+                    <input type="number" name="towel" value="0" min="0" style="text-align: center;">
+                    <input type="button" value="+" onclick="incrementValue('towel')">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Pillow Cover</td>
+            <td class="quantity-cell">
+                <div class="number-input">
+                    <input type="button" value="-" onclick="decrementValue('pillowcover')">
+                    <!-- Adjusted input type back to number as implied by the correction request -->
+                    <input type="number" name="pillowcover" value="0" min="0" style="text-align: center;">
+                    <input type="button" value="+" onclick="incrementValue('pillowcover')">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Salwar</td>
+            <td class="quantity-cell">
+                <div class="number-input">
+                    <input type="button" value="-" onclick="decrementValue('salwar')">
+                    <!-- Adjusted input type back to number as implied by the correction request -->
+                    <input type="number" name="salwar" value="0" min="0" style="text-align: center;">
+                    <input type="button" value="+" onclick="incrementValue('salwar')">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>Lower</td>
+            <td class="quantity-cell">
+                <div class="number-input">
+                    <input type="button" value="-" onclick="decrementValue('lower')">
+                    <!-- Adjusted input type back to number as implied by the correction request -->
+                    <input type="number" name="lower" value="0" min="0" style="text-align: center;">
+                    <input type="button" value="+" onclick="incrementValue('lower')">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>Nikkar</td>
+            <td class="quantity-cell">
+                <div class="number-input">
+                    <input type="button" value="-" onclick="decrementValue('nikar')">
+                    <!-- Adjusted input type back to number as implied by the correction request -->
+                    <input type="number" name="nikar" value="0" min="0" style="text-align: center;">
+                    <input type="button" value="+" onclick="incrementValue('nikar')">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>School Pant</td>
+            <td class="quantity-cell">
+                <div class="number-input">
+                    <input type="button" value="-" onclick="decrementValue('schoolpant')">
+                    <!-- Adjusted input type back to number as implied by the correction request -->
+                    <input type="number" name="schoolpant" value="0" min="0" style="text-align: center;">
+                    <input type="button" value="+" onclick="incrementValue('schoolpant')">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>Civil Pants </td>
+            <td class="quantity-cell">
+                <div class="number-input">
+                    <input type="button" value="-" onclick="decrementValue('civilpants')">
+                    <!-- Adjusted input type back to number as implied by the correction request -->
+                    <input type="number" name="civilpants" value="0" min="0" style="text-align: center;">
+                    <input type="button" value="+" onclick="incrementValue('civilpants')">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td>Jeans</td>
+            <td class="quantity-cell">
+                <div class="number-input">
+                    <input type="button" value="-" onclick="decrementValue('jeans')">
+                    <!-- Adjusted input type back to number as implied by the correction request -->
+                    <input type="number" name="jeans" value="0" min="0" style="text-align: center;">
+                    <input type="button" value="+" onclick="incrementValue('jeans')">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>Kurta</td>
+            <td class="quantity-cell">
+                <div class="number-input">
+                    <input type="button" value="-" onclick="decrementValue('kurta')">
+                    <!-- Adjusted input type back to number as implied by the correction request -->
+                    <input type="number" name="kurta" value="0" min="0" style="text-align: center;">
+                    <input type="button" value="+" onclick="incrementValue('kurta')">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>11</td>
+            <td>T-Shirt</td>
+            <td class="quantity-cell">
+                <div class="number-input">
+                    <input type="button" value="-" onclick="decrementValue('tshirt')">
+                    <!-- Adjusted input type back to number as implied by the correction request -->
+                    <input type="number" name="tshirt" value="0" min="0" style="text-align: center;">
+                    <input type="button" value="+" onclick="incrementValue('tshirt')">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>12</td>
+            <td>School Shirt</td>
+            <td class="quantity-cell">
+                <div class="number-input">
+                    <input type="button" value="-" onclick="decrementValue('schoolshirt')">
+                    <!-- Adjusted input type back to number as implied by the correction request -->
+                    <input type="number" name="schoolshirt" value="0" min="0" style="text-align: center;">
+                    <input type="button" value="+" onclick="incrementValue('schoolshirt')">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>13</td>
+            <td>Civil Shirt</td>
+            <td class="quantity-cell">
+                <div class="number-input">
+                    <input type="button" value="-" onclick="decrementValue('civilshirt')">
+                    <!-- Adjusted input type back to number as implied by the correction request -->
+                    <input type="number" name="civilshirt" value="0" min="0" style="text-align: center;">
+                    <input type="button" value="+" onclick="incrementValue('civilshirt')">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>14</td>
+            <td>Sweater</td>
+            <td class="quantity-cell">
+                <div class="number-input">
+                    <input type="button" value="-" onclick="decrementValue('sweater')">
+                    <!-- Adjusted input type back to number as implied by the correction request -->
+                    <input type="number" name="sweater" value="0" min="0" style="text-align: center;">
+                    <input type="button" value="+" onclick="incrementValue('sweater')">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>15</td>
+            <td>Jacket</td>
+            <td class="quantity-cell">
+                <div class="number-input">
+                    <input type="button" value="-" onclick="decrementValue('jacket')">
+                    <!-- Adjusted input type back to number as implied by the correction request -->
+                    <input type="number" name="jacket" value="0" min="0" style="text-align: center;">
+                    <input type="button" value="+" onclick="incrementValue('jacket')">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>16</td>
+            <td>School Sweater</td>
+            <td class="quantity-cell">
+                <div class="number-input">
+                    <input type="button" value="-" onclick="decrementValue('schoolsweater')">
+                    <!-- Adjusted input type back to number as implied by the correction request -->
+                    <input type="number" name="schoolsweater" value="0" min="0" style="text-align: center;">
+                    <input type="button" value="+" onclick="incrementValue('schoolsweater')">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>17</td>
+            <td>Coat</td>
+            <td class="quantity-cell">
+                <div class="number-input">
+                    <input type="button" value="-" onclick="decrementValue('coat')">
+                    <!-- Adjusted input type back to number as implied by the correction request -->
+                    <input type="number" name="coat" value="0" min="0" style="text-align: center;">
+                    <input type="button" value="+" onclick="incrementValue('coat')">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>18</td>
+            <td>Blanket</td>
+            <td class="quantity-cell">
+                <div class="number-input">
+                    <input type="button" value="-" onclick="decrementValue('blanket')">
+                    <!-- Adjusted input type back to number as implied by the correction request -->
+                    <input type="number" name="blanket" value="0" min="0" style="text-align: center;">
+                    <input type="button" value="+" onclick="incrementValue('blanket')">
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>19</td>
+            <td>Scarves</td>
+            <td class="quantity-cell">
+                <div class="number-input">
+                    <input type="button" value="-" onclick="decrementValue('scarves')">
+                    <!-- Adjusted input type back to number as implied by the correction request -->
+                    <input type="number" name="scarves" value="0" min="0" style="text-align: center;">
+                    <input type="button" value="+" onclick="incrementValue('scarves')">
+                </div>
+            </td>
+        </tr>
+
+        <!-- Repeat the <tr>...</tr> block for each item, with unique IDs for each -->
+    </table>
+    <div id="totalClothingItemsContainer" style="margin-top: 20px; text-align: center;">
+        <strong>Total Clothing Items: </strong><span id="totalClothingItems">0</span>
+    </div>
+    <input type="hidden" id="clothesDataInput" name="clothesData" value="">
+
+    <div style="margin-top: 10px; text-align: center;">
+        <input type="submit" value="Submit" style="padding: 10px 20px; font-size: larger;">
+    </div>
+
+
+
+        </table>
+       
+    </form>
+    <script>
+        function incrementValue(inputId) {
+            var inputElement = document.querySelector('input[name="' + inputId + '"]');
+            var currentValue = parseInt(inputElement.value);
+            inputElement.value = currentValue + 1;
+            updateTotal();
+        }
+    
+        function decrementValue(inputId) {
+            var inputElement = document.querySelector('input[name="' + inputId + '"]');
+            var currentValue = parseInt(inputElement.value);
+            if (currentValue > 0) {
+                inputElement.value = currentValue - 1;
+                updateTotal();
+            }
+        }
+       
+        function updateTotal() {
+            var totalClothingItems = 0;
+            var quantityInputs = document.querySelectorAll('.quantity-cell input[type="number"]');
+            quantityInputs.forEach(function (input) {
+                totalClothingItems += parseInt(input.value);
+            });
+            document.getElementById('totalClothingItems').innerText = totalClothingItems;
+        }
+        function prepareClothesData() {
+    var clothData = {};
+    var quantityInputs = document.querySelectorAll('.quantity-cell input[type="number"]');
+    quantityInputs.forEach(function(input) {
+        var itemName = input.name;
+        var itemQuantity = parseInt(input.value);
+        clothData[itemName] = itemQuantity;
+    });
+    document.getElementById('clothesDataInput').value = JSON.stringify(clothData);
+}
+
+    </script>
+    
+</body>
+</html>

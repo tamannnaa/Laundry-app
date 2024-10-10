@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            font-size: 36px; /* Larger font size */
+            margin-bottom: 20px; /* Add space below the heading */
+        }
+        p {
+            text-align: center;
+            color: #666;
+            font-size: 18px; /* Larger font size */
+            margin-bottom: 20px; /* Add space below the paragraph */
+        }
+        .options {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px; /* Add space below the options */
+        }
+        .options a {
+            text-decoration: none;
+            margin: 0 10px; /* Add margin between buttons */
+        }
+        button {
+            padding: 12px 24px; /* Keep button size */
+            font-size: 16px; /* Slightly larger font size */
+            background-color: #4CAF50; /* Color from the signup and login pages */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #45a049; /* Color from the signup and login pages */
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Portal</h1>
+    <p>Please select an option:</p>
+    <div class="options">
+        <a href="/studentlogin"><button>Student</button></a>
+        <a href="/laundrylogin"><button>Admin</button></a>
+    </div>
+</body>
+</html>
