@@ -58,7 +58,7 @@ Ensure you have the following installed:
    npm install
    
 4. Set up MongoDB connection:
-     1. Update the MongoDB connection string in the code with your credentials.
+      Update the MongoDB connection string in the code with your credentials.
     ```bash
     mongoose.connect("mongodb+srv://<username>:<password>@cluster0.lklbc3z.mongodb.net/laundry?retryWrites=true&w=majority&appName=Cluster0");
     
