@@ -14,7 +14,7 @@ app.use(session({
   saveUninitialized: true
 }));
 
-mongoose.connect("mongodb+srv://tamanna:abcd1234abcd@cluster0.lklbc3z.mongodb.net/laundry?retryWrites=true&w=majority&appName=Cluster0");
+mongoose.connect("your-connection-url");
 
 const userSchema = new mongoose.Schema({
   room_no: { type: Number, required: true },
