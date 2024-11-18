@@ -1,4 +1,4 @@
-# Laundry Management System 🌐🚀
+# U-Laundry 🌐🚀
 
 
 A web application designed to manage laundry services for students in hostels, with user and admin roles for form submissions, status updates, and user management. The project uses **Node.js**, **Express**, **MongoDB**, and **EJS** for rendering views.
